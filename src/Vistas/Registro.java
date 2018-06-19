@@ -6,6 +6,7 @@ import java.awt.*;
 
 
 public class Registro extends JFrame implements ActionListener {
+    //prueba para probar conflictos
     //Controles del panel Altas
     private final JPanel panel1, panel2, panel3, panel4, panel5;
     private final JLabel camp1, camp2, camp3, camp4, camp5, camp6, camp7, camp8, camp9, camp10;
