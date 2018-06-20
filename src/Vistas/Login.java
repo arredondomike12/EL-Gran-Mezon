@@ -5,10 +5,7 @@
  */
 package Vistas;
 
-/**
- *
- * @author dell
- */
+
 public class Login {
-    
+    public int base;
 }
