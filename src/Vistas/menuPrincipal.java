@@ -3,16 +3,12 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 
-public class menuPrincipal extends JFrame implements ActionListener {
+public class menuPrincipal extends JFrame {
     private final JLabel etiqueta1, etiqueta2, icono1, icono2, icono3, icono4, icono5, icono6;
     private final JLabel titulo, piePgina;
     private final JLabel nom1, nom2, nom3, nom4, nom5, nom6;
     private final JPanel panel1;
-    
-    private String URLRecursos = "C:\\Users\\dell\\Documents\\NetBeansProjects\\El Gran Mezon 2.0\\src\\Recursos";
 
-    
-    
     public menuPrincipal(){
        setLayout(null);
        setTitle("El Gran Mezon");
@@ -34,56 +30,56 @@ public class menuPrincipal extends JFrame implements ActionListener {
        panel1.add(titulo);
        
        
-       ImageIcon imagen = new ImageIcon(URLRecursos + "\\cerrar.png");
+       ImageIcon imagen = new ImageIcon("src\\Recursos\\tach.png");
        etiqueta1 = new JLabel(imagen);
        etiqueta1.setBounds(740, 0, 40, 40);
        etiqueta1.setVisible(true);
        etiqueta1.setHorizontalAlignment(JLabel.CENTER);
        panel1.add(etiqueta1);
        
-       ImageIcon minim = new ImageIcon(URLRecursos + "\\multi-tab.png");
+       ImageIcon minim = new ImageIcon("src\\Recursos\\min.png");
        etiqueta2 = new JLabel(minim);
        etiqueta2.setBounds(700, 0, 40, 40);
        etiqueta2.setVisible(true);
        etiqueta2.setHorizontalAlignment(JLabel.CENTER);
        panel1.add(etiqueta2);
        
-       ImageIcon icon1 = new ImageIcon(URLRecursos + "\\isla.png");
+       ImageIcon icon1 = new ImageIcon("src\\Recursos\\isla.png");
        icono1 = new JLabel(icon1);
        icono1.setBounds(80, 100, 150, 150);
        icono1.setVisible(true);
        icono1.setHorizontalAlignment(JLabel.CENTER);
        panel1.add(icono1);
        
-       ImageIcon icon2 = new ImageIcon(URLRecursos + "\\crecimiento.png");
+       ImageIcon icon2 = new ImageIcon("src\\Recursos\\crecimiento.png");
        icono2 = new JLabel(icon2);
        icono2.setBounds(80, 300, 150, 150);
        icono2.setVisible(true);
        icono2.setHorizontalAlignment(JLabel.CENTER);
        panel1.add(icono2);
        
-       ImageIcon icon3 = new ImageIcon(URLRecursos + "\\icon.png");
+       ImageIcon icon3 = new ImageIcon("src\\Recursos\\icon.png");
        icono3 = new JLabel(icon3);
        icono3.setBounds(530, 100, 150, 150);
        icono3.setVisible(true);
        icono3.setHorizontalAlignment(JLabel.CENTER);
        panel1.add(icono3);
        
-       ImageIcon icon4 = new ImageIcon(URLRecursos +"\\cliente.png");
+       ImageIcon icon4 = new ImageIcon("src\\Recursos\\cliente.png");
        icono4 = new JLabel(icon4);
        icono4.setBounds(530, 300, 150, 150);
        icono4.setVisible(true);
        icono4.setHorizontalAlignment(JLabel.CENTER);
        panel1.add(icono4);
        
-       ImageIcon icon5 = new ImageIcon(URLRecursos + "\\equipo.png");
+       ImageIcon icon5 = new ImageIcon("src\\Recursos\\equipo.png");
        icono5 = new JLabel(icon5);
        icono5.setBounds(300, 100, 150, 150);
        icono5.setVisible(true);
        icono5.setHorizontalAlignment(JLabel.CENTER);
        panel1.add(icono5);
        
-       ImageIcon icon6 = new ImageIcon(URLRecursos + "\\ayudar.png");
+       ImageIcon icon6 = new ImageIcon("src\\Recursos\\ayudar.png");
        icono6 = new JLabel(icon6);
        icono6.setBounds(300, 300, 150, 150);
        icono6.setVisible(true);
@@ -139,11 +135,54 @@ public class menuPrincipal extends JFrame implements ActionListener {
        piePgina.setForeground(Color.ORANGE);
        panel1.add(piePgina);
        
-       // clor de los iconos: D99B00      
+       // clor de los iconos: D99B00 
+       
+       Eventos me = new Eventos();
+       icono1.addMouseListener(me);
+       icono2.addMouseListener(me);
+       icono3.addMouseListener(me);
+       icono4.addMouseListener(me);
+       icono5.addMouseListener(me);
+       icono6.addMouseListener(me);
+       etiqueta1.addMouseListener(me);
+       etiqueta2.addMouseListener(me);
+    }
+    //Eventos
+    
+    private class Eventos extends MouseAdapter{
+        
+        @Override
+        public void mouseEntered(MouseEvent e){
+            if (e.getSource() == icono1){icono1.setBorder(BorderFactory.createLineBorder(Color.ORANGE));}
+            if (e.getSource() == icono2){icono2.setBorder(BorderFactory.createLineBorder(Color.ORANGE));}
+            if (e.getSource() == icono3){icono3.setBorder(BorderFactory.createLineBorder(Color.ORANGE));}
+            if (e.getSource() == icono4){icono4.setBorder(BorderFactory.createLineBorder(Color.ORANGE));}
+            if (e.getSource() == icono5){icono5.setBorder(BorderFactory.createLineBorder(Color.ORANGE));}
+            if (e.getSource() == icono6){icono6.setBorder(BorderFactory.createLineBorder(Color.ORANGE));}
+        }
+        @Override
+        public void mouseExited(MouseEvent e){
+            if (e.getSource() == icono1){icono1.setBorder(null);}
+            if (e.getSource() == icono2){icono2.setBorder(null);}
+            if (e.getSource() == icono3){icono3.setBorder(null);}
+            if (e.getSource() == icono4){icono4.setBorder(null);}
+            if (e.getSource() == icono5){icono5.setBorder(null);}
+            if (e.getSource() == icono6){icono6.setBorder(null);}            
+        }
+        @Override
+        public void mouseClicked(MouseEvent e){
+            if (e.getSource() == icono4){
+                try{
+                    Registro rm = new Registro();
+                    rm.setBounds(0, 0, 800, 600);
+                    rm.setVisible(true);
+                    rm.setResizable(false);
+                    rm.setLocationRelativeTo(null);
+                }
+                catch(Exception h){}
+            }
+        }
+        
     }
 
-    @Override
-    public void actionPerformed(ActionEvent ae) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

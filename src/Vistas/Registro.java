@@ -5,7 +5,7 @@ import java.awt.event.*;
 import java.awt.*;
 
 
-public class Registro extends JFrame implements ActionListener {
+public class Registro extends JFrame {
     
     private final JPanel panel1, panel2, panel3, panel4, panel5;
     private final JLabel camp1, camp2, camp3, camp4, camp5, camp6, camp7, camp8, camp9, camp10;
@@ -60,14 +60,14 @@ public class Registro extends JFrame implements ActionListener {
        panel3.setBounds(350, 85, 400, 465);
        panel1.add(panel3);
        
-       ImageIcon imagen = new ImageIcon(URLRecursos + "\\cerrar.png");
+       ImageIcon imagen = new ImageIcon("src\\Recursos\\tach.png");
        etiqueta1 = new JLabel(imagen);
        etiqueta1.setBounds(740, 0, 40, 40);
        etiqueta1.setVisible(true);
        etiqueta1.setHorizontalAlignment(JLabel.CENTER);
        panel1.add(etiqueta1);
        
-       ImageIcon minim = new ImageIcon(URLRecursos + "\\multi-tab.png");
+       ImageIcon minim = new ImageIcon("src\\Recursos\\min.png");
        etiqueta2 = new JLabel(minim);
        etiqueta2.setBounds(700, 0, 40, 40);
        etiqueta2.setVisible(true);
@@ -594,8 +594,10 @@ public class Registro extends JFrame implements ActionListener {
        menu1.setBorder(BorderFactory.createLineBorder(Color.ORANGE));
        menu1.setFont(new Font("Bookman Old Style", 0 , 14));
        menu1.setForeground(Color.ORANGE);
+       menu1.setOpaque(true);
+       menu1.setBackground(Color.WHITE);
        panel1.add(menu1);
-       
+      
        menu2 = new JLabel("Borrar");
        menu2.setBounds(260, 15, 100, 30);
        menu2.setVisible(true);
@@ -603,6 +605,8 @@ public class Registro extends JFrame implements ActionListener {
        menu2.setBorder(BorderFactory.createLineBorder(Color.ORANGE));
        menu2.setFont(new Font("Bookman Old Style", 0 , 14));
        menu2.setForeground(Color.ORANGE);
+       menu2.setOpaque(true);
+       menu2.setBackground(Color.WHITE);
        panel1.add(menu2);
        
        menu3 = new JLabel("Modificar");
@@ -612,14 +616,42 @@ public class Registro extends JFrame implements ActionListener {
        menu3.setBorder(BorderFactory.createLineBorder(Color.ORANGE));
        menu3.setFont(new Font("Bookman Old Style", 0 , 14));
        menu3.setForeground(Color.ORANGE);
+       menu3.setOpaque(true);
+       menu3.setBackground(Color.WHITE);
        panel1.add(menu3);
        
        
+       Eventos ev = new Eventos();
+       menu1.addMouseListener(ev);
+       menu2.addMouseListener(ev);
+       menu3.addMouseListener(ev);
+       
+       
     }
-
-    @Override
-    public void actionPerformed(ActionEvent ae) {
+    private class Eventos extends MouseAdapter {
+        
+        @Override
+        public void mouseClicked(MouseEvent e){
+            if (e.getSource() == menu1){panel2.setVisible(true); panel4.setVisible(false); panel5.setVisible(false);}
+            if (e.getSource() == menu2){panel2.setVisible(false); panel4.setVisible(false); panel5.setVisible(true);}
+            if (e.getSource() == menu3){panel2.setVisible(false); panel4.setVisible(true); panel5.setVisible(true);}
+        }
+        @Override
+        public void mouseEntered(MouseEvent e){
+            if (e.getSource() == menu1){menu1.setBackground(Color.ORANGE);menu1.setForeground(Color.BLACK);}
+            if (e.getSource() == menu2){menu2.setBackground(Color.ORANGE);menu2.setForeground(Color.BLACK);}
+            if (e.getSource() == menu3){menu3.setBackground(Color.ORANGE);menu3.setForeground(Color.BLACK);}
+            
+        }
+        @Override
+        public void mouseExited(MouseEvent e){
+            if (e.getSource() == menu1){menu1.setBackground(Color.WHITE);menu1.setForeground(Color.ORANGE);}
+            if (e.getSource() == menu2){menu2.setBackground(Color.WHITE);menu2.setForeground(Color.ORANGE);}
+            if (e.getSource() == menu3){menu3.setBackground(Color.WHITE);menu3.setForeground(Color.ORANGE);}
+            
+        }
         
     }
+
     
 }
