@@ -3,9 +3,10 @@ package Vistas;
 
 import java.awt.Color;
 import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import javax.swing.*;
 import Classes.*;
+import java.awt.Component;
+
 
 /**
  *
@@ -23,9 +24,9 @@ public class Reportes extends JFrame{
        this.setUndecorated(true);
        getContentPane().setBackground(Color.WHITE);
        
-       miFabrica = new fabricaGraficas("Barras");
+       miFabrica = new fabricaGraficas("Puntos");
        miGrafica = miFabrica.crearGrafica();
-       miGrafica.insertarGrafica("Barras");
+       miGrafica.insertarGrafica("Puntos");
        panel2 = miGrafica.getPanelChart();
        
        
@@ -41,6 +42,7 @@ public class Reportes extends JFrame{
        panel2.setBorder(BorderFactory.createLineBorder(Color.ORANGE));
        panel2.setBounds(40, 50, 700, 500);
        panel2.setVisible(true);
+       panel2.setName("PanelDesechable");
        panel1.add(panel2);
        
      
@@ -57,13 +59,12 @@ public class Reportes extends JFrame{
        
        eleccion.addItemListener((ItemEvent e) -> {
            if(e.getStateChange() == ItemEvent.SELECTED){
+               int index = eleccion.getSelectedIndex();
                String tipo = e.getItem().toString();
-                miFabrica = new fabricaGraficas(tipo);
-                miGrafica = miFabrica.crearGrafica();
-                miGrafica.insertarGrafica(tipo);
-                panel2 = miGrafica.getPanelChart();
-                panel1.add(panel2);
-               
+               miFabrica = new fabricaGraficas(tipo);
+               miGrafica = miFabrica.crearGrafica();
+               miGrafica.insertarGrafica(tipo);
+               añadirPanel(miGrafica.getPanelChart());
                System.out.println(tipo);
            }
        });
@@ -71,6 +72,18 @@ public class Reportes extends JFrame{
        
        
         
+    }
+    private void añadirPanel(JPanel h){
+        for(Component item : panel1.getComponents()){
+            if("PanelDesechable".equals(item.getName())){
+               panel1.remove(item);
+               h.setBounds(40, 50, 700, 500);
+               h.setName("PanelDesechable");
+               panel1.add(h);
+               panel1.repaint();
+            }
+        }
+
     }
 
     

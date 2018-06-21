@@ -1,4 +1,3 @@
-
 package Classes;
 
 /**
@@ -6,23 +5,15 @@ package Classes;
  * @author kacha
  */
 import org.jfree.chart.*;
-import org.jfree.data.xy.*;
 import javax.swing.*;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 public final class graficaBarras extends Grafica {
     JFreeChart grafica;
-    ChartPanel panel1;
-    
-    XYSeriesCollection datos = new XYSeriesCollection();;
     String titulo, etiquetaY, etiquetaX;
-    private double [] x, y;
-   
     
-    public graficaBarras(){
+    public graficaBarras(){}
         
-    }
-    
     @Override
     public String Descripcion(){
         return "Grafica de barras";
