@@ -137,6 +137,7 @@ public class menuPrincipal extends JFrame {
        
        // clor de los iconos: D99B00 
        
+       //Controles para los eventos
        Eventos me = new Eventos();
        icono1.addMouseListener(me);
        icono2.addMouseListener(me);
