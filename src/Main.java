@@ -4,7 +4,7 @@ public class Main {
 
 
     public static void main(String[] args) {
-       Reportes main = new Reportes();
+       menuPrincipal main = new menuPrincipal();
        
        //main.setBounds(0, 0, 300, 400);
        main.setBounds(0, 0, 800, 600);

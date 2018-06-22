@@ -6,6 +6,9 @@ import java.awt.event.ItemEvent;
 import javax.swing.*;
 import Classes.*;
 import java.awt.Component;
+import java.awt.Font;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 
 /**
@@ -13,7 +16,8 @@ import java.awt.Component;
  * @author kacha
  */
 public class Reportes extends JFrame{
-    private JPanel panel1, panel2, panel3;
+    private JPanel panel1, panel2;
+    private JLabel etiqueta1, cerrar, minimizar;
     private JComboBox eleccion;
     private Grafica miGrafica ;
     private fabricaGraficas miFabrica;
@@ -45,13 +49,36 @@ public class Reportes extends JFrame{
        panel2.setName("PanelDesechable");
        panel1.add(panel2);
        
+       etiqueta1 = new JLabel("Seleccion el tipo de reporte:");
+       etiqueta1.setBounds(50, 15, 250, 20);
+       etiqueta1.setBackground(Color.WHITE);
+       etiqueta1.setFont(new Font("Bookman Old Style", 0, 14));
+       etiqueta1.setForeground(Color.ORANGE);
+       etiqueta1.setVisible(true);
+       panel1.add(etiqueta1);
+       
+       ImageIcon imagen = new ImageIcon("src\\Recursos\\tach.png");
+       cerrar = new JLabel(imagen);
+       cerrar.setBounds(740, 0, 40, 40);
+       cerrar.setVisible(true);
+       cerrar.setHorizontalAlignment(JLabel.CENTER);
+       panel1.add(cerrar);
+       
+       ImageIcon minim = new ImageIcon("src\\Recursos\\min.png");
+       minimizar = new JLabel(minim);
+       minimizar.setBounds(700, 0, 40, 40);
+       minimizar.setVisible(true);
+       minimizar.setHorizontalAlignment(JLabel.CENTER);
+       panel1.add(minimizar);
+       
      
        
        eleccion = new JComboBox();
        eleccion.setBackground(Color.WHITE);
-       eleccion.setBounds(500, 20, 200, 20);
+       eleccion.setBounds(255, 15, 200, 20);
        eleccion.addItem("Puntos");
        eleccion.addItem("Barras");
+       eleccion.addItem("Lineas");
        panel1.add(eleccion);
        
    
@@ -68,6 +95,27 @@ public class Reportes extends JFrame{
                System.out.println(tipo);
            }
        });
+       
+       cerrar.addMouseListener(new MouseListener(){
+        
+           @Override
+           public void mouseClicked(MouseEvent me){
+               if (me.getSource() == cerrar){
+                   dispose();
+               }
+           }
+           @Override
+           public void mousePressed(MouseEvent me){}
+           @Override
+           public void mouseReleased(MouseEvent me){}
+           @Override
+           public void mouseEntered(MouseEvent me){}
+           @Override
+           public void mouseExited(MouseEvent me){}
+               
+           
+        
+    });
        
        
        

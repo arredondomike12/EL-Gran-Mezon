@@ -23,9 +23,6 @@ public class Registro extends JFrame {
     //Menu
     private final JLabel menu1, menu2, menu3;
    
-    
-    private String URLRecursos = "C:\\Users\\dell\\Documents\\NetBeansProjects\\El Gran Mezon 2.0\\src\\Recursos";
-    
     public Registro(){
         setLayout(null);
         this.setUndecorated(true);
@@ -625,7 +622,7 @@ public class Registro extends JFrame {
        menu1.addMouseListener(ev);
        menu2.addMouseListener(ev);
        menu3.addMouseListener(ev);
-       
+       etiqueta1.addMouseListener(ev);
        
     }
     private class Eventos extends MouseAdapter {
@@ -635,6 +632,8 @@ public class Registro extends JFrame {
             if (e.getSource() == menu1){panel2.setVisible(true); panel4.setVisible(false); panel5.setVisible(false);}
             if (e.getSource() == menu2){panel2.setVisible(false); panel4.setVisible(false); panel5.setVisible(true);}
             if (e.getSource() == menu3){panel2.setVisible(false); panel4.setVisible(true); panel5.setVisible(true);}
+            
+            if(e.getSource() == etiqueta1){dispose();}
         }
         @Override
         public void mouseEntered(MouseEvent e){

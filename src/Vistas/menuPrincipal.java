@@ -182,6 +182,20 @@ public class menuPrincipal extends JFrame {
                 }
                 catch(Exception h){}
             }
+            if(e.getSource() == etiqueta1){
+                System.exit(0);
+            }
+            if(e.getSource() == icono2){
+                try{
+                    Reportes rm = new Reportes();
+                    rm.setBounds(0, 0, 800, 600);
+                    rm.setVisible(true);
+                    rm.setResizable(false);
+                    rm.setLocationRelativeTo(null);
+                }
+                catch(Exception h){}
+                
+            }
         }
         
     }

@@ -20,6 +20,9 @@ public class fabricaGraficas {
         else if(tipo.equalsIgnoreCase("Puntos")) {
             return new graficaPuntos();
         }
+        else if(tipo.equalsIgnoreCase("Lineas")){
+            return new graficaLineas();
+        }
         return null;
     }
     
